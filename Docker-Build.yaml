@@ -6,9 +6,10 @@
   tasks:
  
   - name: Copy directory from Ansible server to remote host
-    synchronize:
+    copy:
       src: /var/lib/awx/projects/_53__cicd_pfe_project
-      dest: /tmp/
+      dest: /tmp/angular-project
+      remote_src: yes
       
   - name: Build the Docker image
     docker_image:
