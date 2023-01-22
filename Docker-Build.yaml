@@ -7,9 +7,8 @@
  
   - name: Copy directory from Ansible server to remote host
     copy:
-      src: /var/lib/awx/projects/_53__cicd_pfe_project
+      src: /var/lib/awx/projects/_53__cicd_pfe_project/
       dest: /tmp/angular-project
-      remote_src: yes
       
   - name: Build the Docker image
     docker_image:
