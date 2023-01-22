@@ -8,6 +8,7 @@
     synchronize:
       src: /var/lib/awx/projects/_53__cicd_pfe_project
       dest: /tmp/
+      
   - name: Build the Docker image
     docker_image:
       path: /tmp/_53__cicd_pfe_project/Dockerfile
