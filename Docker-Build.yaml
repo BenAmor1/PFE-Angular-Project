@@ -4,10 +4,7 @@
   become: yes
   tasks:
   - name: Build the Docker image
-    docker_image:
-      path: .
-      name: angular/pfe
-      state: build
+    shell: docker build . -t angular/pfe
   - name: Tag the image
     shell: docker tag angular/pfe beffa/project_pfe-2022:releaseV1
   - name: Push the image to Docker Hub
