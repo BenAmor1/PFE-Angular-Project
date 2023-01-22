@@ -11,7 +11,7 @@
       dest: /tmp/angular-project
       
   - name: Build the Docker image
-    shell: docker build /tmp/angular-projectDockerfile -t angular/pfe
+    shell: docker build /tmp/angular-project/Dockerfile -t angular/pfe
       
   - name: Tag the image
     shell: docker tag angular/pfe beffa/project_pfe-2022:releaseV1
