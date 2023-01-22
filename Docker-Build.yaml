@@ -1,0 +1,14 @@
+---
+- name: Build and push Docker image
+  hosts: localhost
+  become: yes
+  tasks:
+  - name: Build the Docker image
+    docker_image:
+      path: .
+      name: angular/pfe
+      state: build
+  - name: Tag the image
+    shell: docker tag angular/pfe beffa/project_pfe-2022:releaseV1
+  - name: Push the image to Docker Hub
+    shell: docker push beffa/project_pfe-2022:releaseV1
