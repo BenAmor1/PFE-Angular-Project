@@ -4,9 +4,16 @@
   become: yes
   
   tasks:
+  - name: Copy directory from Ansible server to remote host
+    synchronize:
+      src: /var/lib/awx/projects/_53__cicd_pfe_project
+      dest: /tmp/
   - name: Build the Docker image
-    shell: docker build . -t angular/pfe
-    
+    docker_image:
+      path: .
+      name: angular/pfe
+      state: build    
+      
   - name: Tag the image
     shell: docker tag angular/pfe beffa/project_pfe-2022:releaseV1
   
