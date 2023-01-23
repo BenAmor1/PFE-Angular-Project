@@ -8,10 +8,10 @@
   - name: Copy directory from Ansible server to remote host
     copy:
       src: /var/lib/awx/projects/_53__cicd_pfe_project/
-      dest: /tmp/angular-project/
+      dest: /root/angular-project/
       
   - name: Install NPM
-    shell: cd /tmp/angular-project/
+    shell: cd /root/angular-project/
   
   - name: Build the Docker image
     shell: docker build . -t angular/pfe 
