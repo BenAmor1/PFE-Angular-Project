@@ -12,7 +12,7 @@
   
   
   - name: Build the Docker image
-    shell: docker build -t angular/pfe -f /tmp/angular-project/Dockerfile .
+    shell: docker build . -t angular/pfe 
 
       
   - name: Tag the image
