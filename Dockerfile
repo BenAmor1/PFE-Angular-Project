@@ -1,7 +1,9 @@
 # stage 1
 FROM node:latest as node
 
-WORKDIR /tmp/angular-app/
+WORKDIR /app
+
+COPY . .
 
 RUN npm install --force
 

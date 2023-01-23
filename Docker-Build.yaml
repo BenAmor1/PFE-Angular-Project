@@ -9,7 +9,9 @@
     copy:
       src: /var/lib/awx/projects/_53__cicd_pfe_project/
       dest: /tmp/angular-project/
-  
+      
+  - name: change working directory
+     command: cd /tmp/angular-project/
   
   - name: Build the Docker image
     shell: docker build . -t angular/pfe 
