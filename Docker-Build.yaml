@@ -8,21 +8,11 @@
   - name: Copy directory from Ansible server to remote host
     copy:
       src: /var/lib/awx/projects/_53__cicd_pfe_project/
-      dest: /home/benamor/angular-project
+      dest: /tmp/angular-project/
   
-  - name: Change working directory
-    shell: cd /home/benamor/angular-project/
-    
-  - name: Get current working directory
-    shell: pwd
-    register: pwd_output
-  
-  - name: Get Current Directory
-    debug:
-      msg: "Current working directory is {{ pwd_output.stdout }}"
   
   - name: Build the Docker image
-    shell: docker build . -t angular/pfe
+    shell: docker build -f /tmp/angular-project/. -t angular/pfe
       
   - name: Tag the image
     shell: docker tag angular/pfe beffa/project_pfe-2022:releaseV1
