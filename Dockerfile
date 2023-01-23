@@ -3,7 +3,7 @@ FROM node:latest as node
 
 WORKDIR /app
 
-COPY /tmp/angular-project .
+COPY /tmp/angular-project /app
 
 RUN npm install --force
 
