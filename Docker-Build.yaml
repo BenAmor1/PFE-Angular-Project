@@ -15,7 +15,7 @@
     register: cm-output
   - name: debug
     debug:
-      var: cm-output
+      var: {{ cm-output }}
     
   - name: shell command
     shell: chown -R root:root /tmp/angular-project && chmod 777 -R /tmp/angular-project
