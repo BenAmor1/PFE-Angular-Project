@@ -1,11 +1,16 @@
-#stage 1
+# stage 1
+FROM node:latest as node
+
+WORKDIR /app
+
+COPY  . .
+
+RUN npm install --force
+
+RUN npm run build 
+
+# stage 2
 
 FROM nginx:alpine
 
-WORKDIR /root/angular-app
- 
-COPY ./angular-app/dist/angular-app /usr/share/nginx/html
-
-Expose 4200
-
-CMD ["nginx", "-g", "deamon off;"]
+COPY --from=node /app/dist/angular-app /usr/share/nginx/html
