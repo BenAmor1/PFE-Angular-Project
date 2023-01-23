@@ -11,14 +11,38 @@
       dest: /root/angular-project/
       
   - name: Install NPM
-    shell: cd /root/angular-project/
+    shell: npm isntall /root/angular-project/ --force
   
   - name: Build the Docker image
-    shell: docker build . -t angular/pfe 
+    shell: ng build --config /root/angular-project/angular.json
 
+  - name: create image docker
+    docker_image:
+      name: angular/pfe
+      build:
+        path: /root/angular-project/
+        pull: no
+      source: build
+      state: present
+      force_source: true
+  - name: run container docker
+    docker_container:
+      name: angularpfe
+      image: angular/pfe
+      state: started
+      recreate: true
+      ports:
+       - "4200:4280"
       
   - name: Tag the image
     shell: docker tag angular/pfe beffa/project_pfe-2022:releaseV1
   
   - name: Push the image to Docker Hub
     shell: docker push beffa/project_pfe-2022:releaseV1
+    
+  - name: remove local coantiner
+    shell: docker rm $(docker ps -a -q)
+    
+    
+  - name: remove local images
+    shell: docker rmi -f $(docker images -aq)
