@@ -13,9 +13,7 @@
   
   - name: Build the Docker image
     shell: cd /tmp/angular-project/ && docker build . -t angular/pfe
-    
-  - name: Run Container
-    shell: docker run angular/pfe 
+     
     
   - name: Tag the image
     shell: docker tag angular/pfe beffa/project_pfe-2022:releaseV1
@@ -23,9 +21,7 @@
   - name: Push the image to Docker Hub
     shell: docker push beffa/project_pfe-2022:releaseV1
     
-  #Stop and remove all container
-  - name: remove local coantiner
-    shell: docker rm $(docker ps -a -q)
+
   #remove all local images
   - name: remove local images
     shell: docker rmi -f $(docker images -aq)  
