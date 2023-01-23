@@ -13,9 +13,14 @@
   - name: Change working directory
     shell: cd /tmp/angular-project/
     
-    
+  - name: Get current working directory
+    shell: pwd
+    register: pwd_output
+    debug:
+      msg: "Current working directory is {{ pwd_output.stdout }}"
+  
   - name: Build the Docker image
-    shell: docker build -t angular/pfe -f /tmp/angular-project/Dockerfile .
+    shell: docker build . -t angular/pfe
       
   - name: Tag the image
     shell: docker tag angular/pfe beffa/project_pfe-2022:releaseV1
