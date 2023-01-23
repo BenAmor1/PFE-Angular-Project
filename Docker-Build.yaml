@@ -11,7 +11,7 @@
       dest: /tmp/angular-project/
       
   - name: change working directory
-     command: cd /tmp/angular-project/
+    command: cd /tmp/angular-project/
   
   - name: Build the Docker image
     shell: docker build . -t angular/pfe 
