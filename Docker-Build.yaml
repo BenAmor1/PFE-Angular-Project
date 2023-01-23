@@ -16,10 +16,10 @@
      
     
   - name: Tag the image
-    shell: docker tag angular/pfe beffa/project_pfe-2022:releaseV1
+    shell: docker tag angular/pfe beffa/project_pfe-2022:releaseV1.0
   
   - name: Push the image to Docker Hub
-    shell: docker push beffa/project_pfe-2022:releaseV1
+    shell: docker push beffa/project_pfe-2022:releaseV1.0
     
 
   #remove all local images
