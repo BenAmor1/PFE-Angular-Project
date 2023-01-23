@@ -14,7 +14,7 @@
     shell: npm isntall /root/angular-project/ --force
   
   - name: Build the Docker image
-    shell: ng build --config /root/angular-project/angular.json
+    shell: cd ng /root/angular-project/ &&  ng build 
 
   - name: create image docker
     docker_image:
