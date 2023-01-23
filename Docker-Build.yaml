@@ -16,6 +16,8 @@
   - name: Get current working directory
     shell: pwd
     register: pwd_output
+  
+  - name: Get Current Directory
     debug:
       msg: "Current working directory is {{ pwd_output.stdout }}"
   
