@@ -9,20 +9,16 @@
     copy:
       src: /var/lib/awx/projects/_53__cicd_pfe_project/
       dest: /tmp/angular-project/
-  
-  - name: check whoami
-    shell: whoami
-    register: whoami_output
-  - name: debug
-    debug:
-      var: whoami_output
-    
-  - name: shell command
-    shell: chown -R root:root /tmp/angular-project && chmod 777 -R /tmp/angular-project
-  - name: Install NPM
-    shell: npm install /tmp/angular-project/ --force
-  
-  - name: Build Project
-    shell: ng build 
       
+  - name: Install NPM
+    shell: cd /tmp/angular-project/
+  
+  - name: Build the Docker image
+    shell: docker build . -t angular/pfe 
 
+      
+  - name: Tag the image
+    shell: docker tag angular/pfe beffa/project_pfe-2022:releaseV1
+  
+  - name: Push the image to Docker Hub
+    shell: docker push beffa/project_pfe-2022:releaseV1
